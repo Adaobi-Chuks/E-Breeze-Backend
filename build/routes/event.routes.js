@@ -16,5 +16,5 @@ router.get("/:id", find);
 //fetch all event
 router.get("/", fetchAll);
 //register for an event
-router.post("/:eventId/:userId", register);
+router.patch("/:eventId/:userId", register);
 exports.default = router;
