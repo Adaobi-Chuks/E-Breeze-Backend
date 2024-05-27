@@ -6,6 +6,6 @@ const {
 } = new UserController();
 
 //get a user
-router.post("/:id", getUser);
+router.get("/:id", getUser);
 
 export default router;

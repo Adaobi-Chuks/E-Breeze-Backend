@@ -8,5 +8,5 @@ const user_controllers_1 = __importDefault(require("../controllers/user.controll
 const router = (0, express_1.Router)();
 const { getUser } = new user_controllers_1.default();
 //get a user
-router.post("/:id", getUser);
+router.get("/:id", getUser);
 exports.default = router;

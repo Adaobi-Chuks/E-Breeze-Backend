@@ -30,6 +30,7 @@ class UserController {
             }
             //creates a user if the email and phonenumber doesn't exist
             const createdUser = yield create(req.body);
+            const { _id, name, email: Email } = createdUser;
             const token = generateAuthToken(createdUser);
             res.cookie("token", token, {
                 httpOnly: true,
@@ -39,7 +40,7 @@ class UserController {
                 .send({
                 success: true,
                 message: "Successfully signed up",
-                user: createdUser,
+                user: { id: _id, name, email: Email },
                 token
             });
         });
@@ -64,6 +65,7 @@ class UserController {
                 });
             }
             const token = generateAuthToken(_user);
+            const { _id, name, email: Email } = _user;
             res.cookie("token", token, {
                 httpOnly: true,
                 maxAge: (3 * 24 * 60 * 60) * 1000
@@ -71,7 +73,7 @@ class UserController {
             return res.status(200).send({
                 success: true,
                 message: "Successfully logged in",
-                user: _user,
+                user: { id: _id, name, email: Email },
                 token
             });
         });
