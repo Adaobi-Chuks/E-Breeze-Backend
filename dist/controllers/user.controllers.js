@@ -81,12 +81,13 @@ class UserController {
     getUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const user = yield findOne({ _id: req.params.id });
+            const { _id, name, email } = user;
             if (user) {
                 return res.status(200)
                     .send({
                     success: true,
                     message: "User fetched successfully",
-                    user
+                    user: { id: _id, name, email }
                 });
             }
             return res.status(404)

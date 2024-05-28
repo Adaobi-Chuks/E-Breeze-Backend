@@ -73,12 +73,13 @@ export default class UserController {
 
   async getUser(req: Request, res: Response) {
     const user = await findOne({ _id: req.params.id });
+    const { _id, name, email } = user!;
     if (user) {
       return res.status(200)
         .send({
           success: true,
           message: "User fetched successfully",
-          user
+          user: { id: _id, name, email }
         });
     }
     return res.status(404)
