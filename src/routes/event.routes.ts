@@ -10,13 +10,13 @@ const {
     register
 } = new EventController();
 
-//create a event or signup
+//create a event
 router.post("/", validate(createSchema), createEvent);
 //find a event
 router.get("/:id", find);
 //fetch all event
 router.get("/", fetchAll);
 //register for an event
-router.patch("/:eventId/:userId", register);
+router.patch("/register/:eventId/:userId", register);
 
 export default router;
